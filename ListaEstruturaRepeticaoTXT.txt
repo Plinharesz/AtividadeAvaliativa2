@@ -1,0 +1,646 @@
+Lista de Exercícios - Estrutura de Repetição
+
+Pedro Ribeiro Linhares
+RA  12418821
+
+
+
+Estrutura de Repetição - 01
+Faça um programa que peça uma nota, entre zero e dez. Mostre uma mensagem caso o valor seja inválido e continue pedindo até que o usuário informe um valor válido.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+  Scanner scanner = new Scanner(System.in);
+
+    double nota;
+    System.out.println("Insira a nota entre 0 e 10: ");
+    nota = scanner.nextDouble();
+
+    while (nota < 0 || nota > 10) {
+      System.out.println("Valor inválido. Digite outra nota: ");
+      nota = scanner.nextDouble();
+    }
+
+    System.out.println("Nota válida: " + nota);
+      scanner.close();
+
+  }
+}
+
+
+Estrutura de Repetição - 02
+Faça um programa que leia um nome de usuário e a sua senha e não aceite a senha igual ao nome do usuário, mostrando uma mensagem de erro e voltando a pedir as informações.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    // Variáveis
+    String usuario;
+    String senha;
+
+    // Entrada
+    System.out.println("Digite o usuário: ");
+    usuario = scanner.nextLine();
+    System.out.println("Digite a senha: ");
+    senha = scanner.nextLine();
+
+    // Processamento
+    while (usuario.equals(senha)) {
+      System.out.println("Usuário e senha não podem ser iguais. Insira os dados novamente.");
+      System.out.println("Digite o usuário: ");
+      usuario = scanner.nextLine();
+      System.out.println("Digite a senha: ");
+      senha = scanner.nextLine();
+    }
+    System.out.println("Usuário e senha válidos.");
+    scanner.close();
+  }
+}
+
+Estrutura de Repetição - 03
+Faça um programa que leia e valide as seguintes informações:
+Nome: maior que 3 caracteres;
+Idade: entre 0 e 150;
+Salário: maior que zero;
+Sexo: 'f' ou 'm';
+Estado Civil: 's', 'c', 'v', 'd';
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    // Variáveis
+    String nome;
+    int idade;
+    double salario;
+    String sexo;
+    String estadoCivil;
+
+    // Entrada de dados e processamento
+
+    do {
+      System.out.println("Digite o nome (mais de 3 caracteres): ");
+      nome = scanner.nextLine();
+    } while (nome.length() <= 3);
+
+    do {
+      System.out.println("Digite a idade (0 a 150): ");
+      idade = scanner.nextInt();
+      scanner.nextLine(); 
+    } while (idade < 0 || idade > 150);
+
+    do {
+      System.out.println("Digite o salário: (maior que 0): ");
+      salario = scanner.nextDouble();
+      scanner.nextLine();
+    } while (salario < 0);
+
+    do {
+      System.out.println("Digite o sexo (F ou M): ");
+      sexo = scanner.nextLine();
+    } while (!sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("M"));
+
+    do {
+      System.out.println("Digite o estado civil (S, C, V ou D): ");
+      estadoCivil = scanner.nextLine();
+    } while (!estadoCivil.equalsIgnoreCase("S") && !estadoCivil.equalsIgnoreCase("C") && 
+      !estadoCivil.equalsIgnoreCase("V") && !estadoCivil.equalsIgnoreCase("D"));
+
+    System.out.println("Nome: " + nome);
+    System.out.println("Idade: " + idade);
+    System.out.println("Salário: " + salario);
+    System.out.println("Sexo: " + sexo);
+    System.out.println("Estado Civil: " + estadoCivil);
+
+    scanner.close();
+  }
+}
+Estrutura de Repetição - 04
+Supondo que a população de um país A seja da ordem de 80000 habitantes com uma taxa anual de crescimento de 3% e que a população de B seja 200000 habitantes com uma taxa de crescimento de 1.5%. Faça um programa que calcule e escreva o número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas de crescimento.
+public class Main {
+  public static void main(String[] args) {
+    
+    int populacaoA = 80000;
+    int populacaoB = 200000;
+    int anos = 0;
+    double taxaCrescimentoA = 0.03;
+    double taxaCrescimentoB = 0.015;
+
+      while (populacaoA < populacaoB) {
+        populacaoA += (populacaoA * taxaCrescimentoA);
+        populacaoB += (populacaoB * taxaCrescimentoB);
+        anos++;
+      }
+
+     System.out.println("Serão necessários " + anos + " anos");
+  }
+}
+Estrutura de Repetição - 05
+Altere o programa anterior permitindo ao usuário informar as populações e as taxas de crescimento iniciais. Valide a entrada e permita repetir a operação.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    
+    
+    
+    System.out.println("População do país A: ");
+    int populacaoA = scanner.nextInt();
+    
+    System.out.println("Taxa de crescimento do país A em (%): ");
+    double taxaCrescimentoA = scanner.nextDouble() / 100;
+    
+    System.out.println("População do país B: ");
+    int populacaoB = scanner.nextInt();
+    
+    System.out.println("Taxa de crescimento do país B em (%): ");
+    double taxaCrescimentoB = scanner.nextDouble() / 100;
+    
+    int anos = 0;
+
+
+      while (populacaoA < populacaoB) {
+        populacaoA += (int) (populacaoA * taxaCrescimentoA);
+        populacaoB += (int) (populacaoB * taxaCrescimentoB);
+        anos++;
+      }
+
+     System.out.println("Serão necessários " + anos + " anos");
+     scanner.close();
+  }
+}
+Estrutura de Repetição - 06
+Faça um programa que imprima na tela os números de 1 a 20, um abaixo do outro. Depois modifique o programa para que ele mostre os números um ao lado do outro.
+/* Números de 1 ao 20, um abaixo do outro. Tirar o /* e * / para rodar o código.
+
+public class Main {
+    public static void main(String[] args) {
+      
+      for ( int i = 1; i <= 20; i++) {
+        System.out.println(i);
+      }
+    }
+}
+*/  
+
+
+public class Main {
+  public static void main(String[] args) {
+
+    for (int i = 1; i <= 20; i++) {
+      System.out.print(i + " ");
+    }
+  }
+}
+Estrutura de Repetição - 07
+Faça um programa que leia 5 números e informe o maior número.
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+  Scanner scanner = new Scanner(System.in);
+
+    
+    int maior = Integer.MIN_VALUE; //MENOR INTEIRO POSSÍVEL NO PROGRAMA
+    int contador = 1 ;
+    int limite = 5;
+
+      while (contador <= limite) {
+     System.out.println("Digite o " + contador + " número: ");
+     int numero = scanner.nextInt();
+    contador++;
+        
+      if (numero > maior) {
+        maior = numero;
+      }
+      }
+    System.out.println("O maior número é: " + maior);
+    scanner.close();
+  }
+}
+Estrutura de Repetição - 08
+Faça um programa que leia 5 números e informe a soma e a média dos números.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+  Scanner scanner = new Scanner(System.in);
+
+    /*Variáveis
+    
+int numero
+int contador
+int soma
+int media 
+
+      */
+    
+    int contador = 0;
+    int soma = 0;
+
+    while (contador < 5) {
+    System.out.println("Digite o " + (contador + 1) + "º número:");
+    int numero = scanner.nextInt();
+    contador++;
+    soma += numero;
+    }
+
+
+    double media = (double) soma / 5;
+    
+    System.out.println("A soma dos números é: " + soma);
+    System.out.println("A média dos números é: " + media);
+    
+    scanner.close();
+  }
+}
+Estrutura de Repetição - 09
+Faça um programa que imprima na tela apenas os números ímpares entre 1 e 50.
+public class Main {
+  public static void main(String[] args) {
+
+      for (int i = 1; i <= 50; i++) {
+      if (i % 2 != 0) {
+        System.out.print(i + " ");
+      }
+    }
+  }
+}
+Estrutura de Repetição - 10
+Faça um programa que receba dois números inteiros e gere os números inteiros que estão no intervalo compreendido por eles.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Digite o primeiro número: ");
+      int num1 = scanner.nextInt();
+    System.out.println("Digite o segundo número: ");
+      int num2 = scanner.nextInt();
+
+
+    if (num1 == num2) {
+      System.out.println("Os números são iguais. Não há intervalo.");
+    } else {
+      if (num1 <= num2) {
+        System.out.println("O intervalo entre os números [" + num1 + ", " + num2 + "] é:");
+        for (int i = num1 +1; i < num2; i++) {
+          System.out.println(i);
+        } 
+      } else {
+           System.out.println("O intervalo entre os números [" + num2 + ", " + num1 + "] é:");
+        for (int i = num2 +1; i < num1; i++) {
+          System.out.println(i);
+       }
+     }
+   }
+    scanner.close();
+  }
+}
+Estrutura de Repetição - 11
+Altere o programa anterior para mostrar no final a soma dos números.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Digite o primeiro número: ");
+    int numero1 = scanner.nextInt();
+    System.out.print("Digite o segundo número: ");
+    int numero2 = scanner.nextInt();
+
+    int inicio = Math.min(numero1, numero2) + 1;
+    int fim = Math.max(numero1, numero2) - 1;
+
+    for (int numero = inicio; numero <= fim; numero ++) {
+     // System.out.println(numero + " ");
+    }
+
+    int soma = 0;
+    for (int i = inicio; i <= fim; i++) {
+      soma += i; 
+    }
+
+    System.out.println("A soma dos números do intervalo é: " + soma);
+
+  }
+}
+Estrutura de Repetição - 12
+Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer número inteiro entre 1 a 10. O usuário deve informar de qual numero ele deseja ver a tabuada. A saída deve ser conforme o exemplo abaixo:
+Tabuada de 5:
+5 X 1 = 5
+5 X 2 = 10
+...
+5 X 10 = 50
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Digite o número: ");
+    int numero = scanner.nextInt();
+
+    
+
+      for (int i = 1; i <= 10; i++) {
+        int resultado = numero * i;
+        System.out.println(numero + " X " + i + " = " + resultado);
+      }
+    
+  }
+}
+Estrutura de Repetição - 13
+Faça um programa que peça dois números, base e expoente, calcule e mostre o primeiro número elevado ao segundo número. Não utilize a função de potência da linguagem.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Digite o primeiro número: ");
+    int num1 = scanner.nextInt();
+    System.out.print("Digite o segundo número: ");
+    int num2 = scanner.nextInt();
+
+    if (num2 == 0) {
+      System.out.println("o resultado da potência = 1");
+    } if (num2 == 1) {
+      System.out.println("O resultado da potência = " + num1);
+    } else {
+      int resultado = 1;
+      for (int i = 0; i < num2; i++) {
+        resultado *= num1;
+      }
+      System.out.println("O resultado da potência = " + resultado);
+      }
+    } 
+  }
+Estrutura de Repetição - 14
+Faça um programa que peça 10 números inteiros, calcule e mostre a quantidade de números pares e a quantidade de números impares.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+    
+    int pares = 0;
+    int impares = 0;
+    
+   for ( int i = 0; i < 10; i++) {
+      System.out.println("Digite o " + (i+1) + "º número:");
+      int numero = scanner.nextInt();
+
+     if ( numero % 2 == 0) {
+       pares++;
+     } else {
+       impares++;
+     }
+   }
+    System.out.println("Quantidade de números pares: " + pares);
+    System.out.println("Quantidade de números ímpares: " + impares);
+
+    }
+  }
+Estrutura de Repetição - 15
+A série de Fibonacci é formada pela seqüência 1,1,2,3,5,8,13,21,34,55,... Faça um programa capaz de gerar a série até o n?ésimo termo.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Digite o termo n: ");
+    int n = scanner.nextInt();
+    System.out.println("A sequencia de Fibonacci ate o " + n + "º termo é: ");
+
+    //Sequencia de fibonacci: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ... n vezes]
+
+    int primeiroTermo = 1;
+    int segundoTermo = 1;
+    
+    System.out.print(primeiroTermo + " " + segundoTermo + " ");
+    
+
+    if (n >= 3) {
+      for (int i = 3; i <= n; i++) {
+        int proximoTermo = primeiroTermo + segundoTermo;
+        System.out.print(proximoTermo + " ");
+        primeiroTermo = segundoTermo;
+        segundoTermo = proximoTermo;
+            }
+         }
+    scanner.close(); 
+      }
+    }
+
+Estrutura de Repetição - 16
+A série de Fibonacci é formada pela sequência 0,1,1,2,3,5,8,13,21,34,55,... Faça um programa que gere a série até que o valor seja maior que 500.
+public class Main {
+  public static void main(String[] args) {
+
+    int primeiroTermo = 0;
+    int segundoTermo = 1;
+
+    
+    System.out.println("Sequência de Fibonacci até que o valor ultrapasse 500: ");
+
+    System.out.print(primeiroTermo + " " + segundoTermo + " ");
+    int proximoTermo = primeiroTermo + segundoTermo;
+
+    
+
+    while (proximoTermo <= 500) {
+      System.out.print(proximoTermo + " ");
+      
+      primeiroTermo = segundoTermo;
+      segundoTermo = proximoTermo;
+      proximoTermo = primeiroTermo + segundoTermo;
+    }
+  }
+}
+Estrutura de Repetição - 17
+Faça um programa que calcule o fatorial de um número inteiro fornecido pelo usuário. Ex.: 5!=5.4.3.2.1=120
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+
+    //Processamento pra calcular fatorial
+    System.out.print("Digite um número: ");
+    int numero = scanner.nextInt();
+
+    int fatorial = 1;
+
+    for (int i = numero; i > 0; i--) {
+      fatorial *= i;
+    }
+      System.out.println("O fatorial do número " + numero + " é: " + fatorial);
+      scanner.close();
+  }
+}
+Estrutura de Repetição - 18
+Faça um programa que, dado um conjunto de N números, determine o menor valor, o maior valor e a soma dos valores.
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Digite a quantidade de números a serem lidos: ");
+    int quantidadeNumeros = scanner.nextInt();
+    
+    //VARIAVEIS
+
+    int maiorNumero = Integer.MIN_VALUE; 
+    int menorNumero = Integer.MAX_VALUE;
+    int soma = 0;
+
+
+    for (int i = 0; i < quantidadeNumeros; i++) {
+      System.out.print("Digite o " + (i + 1) + "º número: ");
+      int numero = scanner.nextInt();
+
+      if (numero > maiorNumero) {
+        maiorNumero = numero;
+      }
+
+      if (numero < menorNumero) {
+        menorNumero = numero;
+      }
+       soma += numero;
+    }
+
+      System.out.println("O menor número é: " + menorNumero);
+      System.out.println("O maior número é: " + maiorNumero);
+      System.out.println("A soma dos números é: " + soma);
+
+      scanner.close();
+    }
+  }
+Estrutura de Repetição - 19
+Altere o programa anterior para que ele aceite apenas números entre 0 e 1000.
+import java.util.Scanner;
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Digite a quantidade de números: ");
+    int quantidade = scanner.nextInt();
+    
+    while (quantidade < 0 || quantidade > 1000) {
+      System.out.println(" Número invalido. Digite um número entre 1 e 1000: ");
+      quantidade = scanner.nextInt();
+    }
+
+     int menor = Integer.MAX_VALUE;
+     int maior = Integer.MIN_VALUE;
+     int soma = 0;
+      
+       
+    for (int i = 0; i < quantidade; i++) {
+      System.out.print("Digite o " + (i + 1) + "º número: ");
+      int numero = scanner.nextInt();
+
+      if (numero < menor) {
+        menor = numero;
+      }
+        
+      if (numero > maior) {
+        maior = numero;
+      }
+        soma += numero;
+      }
+        System.out.println("Menor número: " + menor);
+        System.out.println("Maior número: " + maior);
+        System.out.println("Soma dos números: " + soma);
+        
+    
+        scanner.close();
+  }
+}
+
+Estrutura de Repetição - 20
+Altere o programa de cálculo do fatorial, permitindo ao usuário calcular o fatorial várias vezes e limitando o fatorial a números inteiros positivos e menores que 16.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int num;
+
+        while (true) {
+            System.out.println("Digite um número inteiro positivo menor que 16 (-1 para sair): ");
+            num = scanner.nextInt();
+
+            if (num == -1) {
+                System.out.println("Encerrando o programa...");
+                break;
+            }
+
+            if (num < 0 || num >= 16) {
+                System.out.println("Número inválido! Por favor, digite um número inteiro positivo menor que 16.");
+                continue;
+            }
+
+            int resultado = calcularFatorial(num);
+            System.out.println("O fatorial de " + num + " é: " + resultado);
+        }
+
+        scanner.close();
+    }
+
+    public static int calcularFatorial(int num) {
+        int fatorial = 1;
+
+        for (int i = 1; i <= num; i++) {
+            fatorial *= i;
+        }
+
+        System.out.println("O fatorial de " + num + " é: " + fatorial);
+        return fatorial;     }
+}
+Estrutura de Repetição - 21
+Faça um programa que peça um número inteiro e determine se ele é ou não um número primo. Um número primo é aquele que é divisível somente por ele mesmo e por 1.
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite um número inteiro positivo:");
+        int num = scanner.nextInt();
+
+        if (primo(num)) {
+            System.out.println(num + " é um número primo.");
+        } else {
+            System.out.println(num + " não é um número primo.");
+        }
+
+        scanner.close();
+    }
+
+    public static boolean primo(int num) {
+        if (num <= 1) {
+            return false;
+        }
+
+        for (int i = 2; i < num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+

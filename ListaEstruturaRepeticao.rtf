@@ -1,0 +1,652 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset1 Cambria Math;}{\f2\fnil\fcharset0 Cambria Math;}}
+{\*\generator Riched20 10.0.19041}{\*\mmathPr\mmathFont1\mwrapIndent1440 }\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\qc\b\f0\fs28\lang22 Lista de Exerc\'edcios - Estrutura de Repeti\'e7\'e3o\b0\par
+\fs22\par
+
+\pard\sa200\sl276\slmult1\b\fs24 Pedro Ribeiro Linhares\par
+RA  12418821\par
+\fs22\par
+\b0\par
+\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 01\par
+Fa\'e7a um programa que pe\'e7a uma nota, entre zero e dez. Mostre uma mensagem caso o valor seja inv\'e1lido e continue pedindo at\'e9 que o usu\'e1rio informe um valor v\'e1lido.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+  Scanner scanner = new Scanner(System.in);\par
+\par
+    double nota;\par
+    System.out.println("Insira a nota entre 0 e 10: ");\par
+    nota = scanner.nextDouble();\par
+\par
+    while (nota < 0 || nota > 10) \{\par
+      System.out.println("Valor inv\'e1lido. Digite outra nota: ");\par
+      nota = scanner.nextDouble();\par
+    \}\par
+\par
+    System.out.println("Nota v\'e1lida: " + nota);\par
+      scanner.close();\par
+\par
+  \}\par
+\}\par
+\par
+\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 02\par
+Fa\'e7a um programa que leia um nome de usu\'e1rio e a sua senha e n\'e3o aceite a senha igual ao nome do usu\'e1rio, mostrando uma mensagem de erro e voltando a pedir as informa\'e7\'f5es.\par
+\b0\fs22 import java.util.Scanner;\b\par
+\b0\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    // Vari\'e1veis\par
+    String usuario;\par
+    String senha;\par
+\par
+    // Entrada\par
+    System.out.println("Digite o usu\'e1rio: ");\par
+    usuario = scanner.nextLine();\par
+    System.out.println("Digite a senha: ");\par
+    senha = scanner.nextLine();\par
+\par
+    // Processamento\par
+    while (usuario.equals(senha)) \{\par
+      System.out.println("Usu\'e1rio e senha n\'e3o podem ser iguais. Insira os dados novamente.");\par
+      System.out.println("Digite o usu\'e1rio: ");\par
+      usuario = scanner.nextLine();\par
+      System.out.println("Digite a senha: ");\par
+      senha = scanner.nextLine();\par
+    \}\par
+    System.out.println("Usu\'e1rio e senha v\'e1lidos.");\par
+    scanner.close();\par
+  \}\par
+\}\par
+\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 03\par
+Fa\'e7a um programa que leia e valide as seguintes informa\'e7\'f5es:\par
+Nome: maior que 3 caracteres;\par
+Idade: entre 0 e 150;\par
+Sal\'e1rio: maior que zero;\par
+Sexo: 'f' ou 'm';\par
+Estado Civil: 's', 'c', 'v', 'd';\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    // Vari\'e1veis\par
+    String nome;\par
+    int idade;\par
+    double salario;\par
+    String sexo;\par
+    String estadoCivil;\par
+\par
+    // Entrada de dados e processamento\par
+\par
+    do \{\par
+      System.out.println("Digite o nome (mais de 3 caracteres): ");\par
+      nome = scanner.nextLine();\par
+    \} while (nome.length() <= 3);\par
+\par
+    do \{\par
+      System.out.println("Digite a idade (0 a 150): ");\par
+      idade = scanner.nextInt();\par
+      scanner.nextLine(); \par
+    \} while (idade < 0 || idade > 150);\par
+\par
+    do \{\par
+      System.out.println("Digite o sal\'e1rio: (maior que 0): ");\par
+      salario = scanner.nextDouble();\par
+      scanner.nextLine();\par
+    \} while (salario < 0);\par
+\par
+    do \{\par
+      System.out.println("Digite o sexo (F ou M): ");\par
+      sexo = scanner.nextLine();\par
+    \} while (!sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("M"));\par
+\par
+    do \{\par
+      System.out.println("Digite o estado civil (S, C, V ou D): ");\par
+      estadoCivil = scanner.nextLine();\par
+    \} while (!estadoCivil.equalsIgnoreCase("S") && !estadoCivil.equalsIgnoreCase("C") && \par
+      !estadoCivil.equalsIgnoreCase("V") && !estadoCivil.equalsIgnoreCase("D"));\par
+\par
+    System.out.println("Nome: " + nome);\par
+    System.out.println("Idade: " + idade);\par
+    System.out.println("Sal\'e1rio: " + salario);\par
+    System.out.println("Sexo: " + sexo);\par
+    System.out.println("Estado Civil: " + estadoCivil);\par
+\par
+    scanner.close();\par
+  \}\par
+\}\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 04\par
+Supondo que a popula\'e7\'e3o de um pa\'eds A seja da ordem de 80000 habitantes com uma taxa anual de crescimento de 3% e que a popula\'e7\'e3o de B seja 200000 habitantes com uma taxa de crescimento de 1.5%. Fa\'e7a um programa que calcule e escreva o n\'famero de anos necess\'e1rios para que a popula\'e7\'e3o do pa\'eds A ultrapasse ou iguale a popula\'e7\'e3o do pa\'eds B, mantidas as taxas de crescimento.\par
+\b0\fs22 public class Main \{\par
+  public static void main(String[] args) \{\par
+    \par
+    int populacaoA = 80000;\par
+    int populacaoB = 200000;\par
+    int anos = 0;\par
+    double taxaCrescimentoA = 0.03;\par
+    double taxaCrescimentoB = 0.015;\par
+\par
+      while (populacaoA < populacaoB) \{\par
+        populacaoA += (populacaoA * taxaCrescimentoA);\par
+        populacaoB += (populacaoB * taxaCrescimentoB);\par
+        anos++;\par
+      \}\par
+\par
+     System.out.println("Ser\'e3o necess\'e1rios " + anos + " anos");\par
+  \}\par
+\}\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 05\par
+Altere o programa anterior permitindo ao usu\'e1rio informar as popula\'e7\'f5es e as taxas de crescimento iniciais. Valide a entrada e permita repetir a opera\'e7\'e3o.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    \par
+    \par
+    \par
+    System.out.println("Popula\'e7\'e3o do pa\'eds A: ");\par
+    int populacaoA = scanner.nextInt();\par
+    \par
+    System.out.println("Taxa de crescimento do pa\'eds A em (%): ");\par
+    double taxaCrescimentoA = scanner.nextDouble() / 100;\par
+    \par
+    System.out.println("Popula\'e7\'e3o do pa\'eds B: ");\par
+    int populacaoB = scanner.nextInt();\par
+    \par
+    System.out.println("Taxa de crescimento do pa\'eds B em (%): ");\par
+    double taxaCrescimentoB = scanner.nextDouble() / 100;\par
+    \par
+    int anos = 0;\par
+\par
+\par
+      while (populacaoA < populacaoB) \{\par
+        populacaoA += (int) (populacaoA * taxaCrescimentoA);\par
+        populacaoB += (int) (populacaoB * taxaCrescimentoB);\par
+        anos++;\par
+      \}\par
+\par
+     System.out.println("Ser\'e3o necess\'e1rios " + anos + " anos");\par
+     scanner.close();\par
+  \}\par
+\}\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 06\par
+Fa\'e7a um programa que imprima na tela os n\'fameros de 1 a 20, um abaixo do outro. Depois modifique o programa para que ele mostre os n\'fameros um ao lado do outro.\par
+\b0\fs22 /* N\'fameros de 1 ao 20, um abaixo do outro. Tirar o /* e * / para rodar o c\'f3digo.\par
+\par
+public class Main \{\par
+    public static void main(String[] args) \{\par
+      \par
+      for ( int i = 1; i <= 20; i++) \{\par
+        System.out.println(i);\par
+      \}\par
+    \}\par
+\}\par
+*/  \par
+\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+\par
+    for (int i = 1; i <= 20; i++) \{\par
+      System.out.print(i + " ");\par
+    \}\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 07\par
+Fa\'e7a um programa que leia 5 n\'fameros e informe o maior n\'famero.\b0\par
+\fs22 import java.util.Scanner;\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+  Scanner scanner = new Scanner(System.in);\par
+\par
+    \par
+    int maior = Integer.MIN_VALUE; //MENOR INTEIRO POSS\'cdVEL NO PROGRAMA\par
+    int contador = 1 ;\par
+    int limite = 5;\par
+\par
+      while (contador <= limite) \{\par
+     System.out.println("Digite o " + contador + " n\'famero: ");\par
+     int numero = scanner.nextInt();\par
+    contador++;\par
+        \par
+      if (numero > maior) \{\par
+        maior = numero;\par
+      \}\par
+      \}\par
+    System.out.println("O maior n\'famero \'e9: " + maior);\par
+    scanner.close();\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 08\par
+Fa\'e7a um programa que leia 5 n\'fameros e informe a soma e a m\'e9dia dos n\'fameros.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+  Scanner scanner = new Scanner(System.in);\par
+\par
+    /*Vari\'e1veis\par
+    \par
+int numero\par
+int contador\par
+int soma\par
+int media \par
+\par
+      */\par
+    \par
+    int contador = 0;\par
+    int soma = 0;\par
+\par
+    while (contador < 5) \{\par
+    System.out.println("Digite o " + (contador + 1) + "\'ba n\'famero:");\par
+    int numero = scanner.nextInt();\par
+    contador++;\par
+    soma += numero;\par
+    \}\par
+\par
+\par
+    double media = (double) soma / 5;\par
+    \par
+    System.out.println("A soma dos n\'fameros \'e9: " + soma);\par
+    System.out.println("A m\'e9dia dos n\'fameros \'e9: " + media);\par
+    \par
+    scanner.close();\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 09\par
+Fa\'e7a um programa que imprima na tela apenas os n\'fameros \'edmpares entre 1 e 50.\par
+\b0\fs22 public class Main \{\par
+  public static void main(String[] args) \{\par
+\par
+      for (int i = 1; i <= 50; i++) \{\par
+      if (i % 2 != 0) \{\par
+        System.out.print(i + " ");\par
+      \}\par
+    \}\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 10\par
+Fa\'e7a um programa que receba dois n\'fameros inteiros e gere os n\'fameros inteiros que est\'e3o no intervalo compreendido por eles.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    System.out.println("Digite o primeiro n\'famero: ");\par
+      int num1 = scanner.nextInt();\par
+    System.out.println("Digite o segundo n\'famero: ");\par
+      int num2 = scanner.nextInt();\par
+\par
+\par
+    if (num1 == num2) \{\par
+      System.out.println("Os n\'fameros s\'e3o iguais. N\'e3o h\'e1 intervalo.");\par
+    \} else \{\par
+      if (num1 <= num2) \{\par
+        System.out.println("O intervalo entre os n\'fameros [" + num1 + ", " + num2 + "] \'e9:");\par
+        for (int i = num1 +1; i < num2; i++) \{\par
+          System.out.println(i);\par
+        \} \par
+      \} else \{\par
+           System.out.println("O intervalo entre os n\'fameros [" + num2 + ", " + num1 + "] \'e9:");\par
+        for (int i = num2 +1; i < num1; i++) \{\par
+          System.out.println(i);\par
+       \}\par
+     \}\par
+   \}\par
+    scanner.close();\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 11\par
+Altere o programa anterior para mostrar no final a soma dos n\'fameros.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    System.out.print("Digite o primeiro n\'famero: ");\par
+    int numero1 = scanner.nextInt();\par
+    System.out.print("Digite o segundo n\'famero: ");\par
+    int numero2 = scanner.nextInt();\par
+\par
+    int inicio = Math.min(numero1, numero2) + 1;\par
+    int fim = Math.max(numero1, numero2) - 1;\par
+\par
+    for (int numero = inicio; numero <= fim; numero ++) \{\par
+     // System.out.println(numero + " ");\par
+    \}\par
+\par
+    int soma = 0;\par
+    for (int i = inicio; i <= fim; i++) \{\par
+      soma += i; \par
+    \}\par
+\par
+    System.out.println("A soma dos n\'fameros do intervalo \'e9: " + soma);\par
+\par
+  \}\par
+\}\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 12\par
+Desenvolva um gerador de tabuada, capaz de gerar a tabuada de qualquer n\'famero inteiro entre 1 a 10. O usu\'e1rio deve informar de qual numero ele deseja ver a tabuada. A sa\'edda deve ser conforme o exemplo abaixo:\par
+\fs22 Tabuada de 5:\par
+5 X 1 = 5\par
+5 X 2 = 10\par
+...\par
+5 X 10 = 50\par
+\b0 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    System.out.println("Digite o n\'famero: ");\par
+    int numero = scanner.nextInt();\par
+\par
+    \par
+\par
+      for (int i = 1; i <= 10; i++) \{\par
+        int resultado = numero * i;\par
+        System.out.println(numero + " X " + i + " = " + resultado);\par
+      \}\par
+    \par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 13\par
+Fa\'e7a um programa que pe\'e7a dois n\'fameros, base e expoente, calcule e mostre o primeiro n\'famero elevado ao segundo n\'famero. N\'e3o utilize a fun\'e7\'e3o de pot\'eancia da linguagem.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    System.out.print("Digite o primeiro n\'famero: ");\par
+    int num1 = scanner.nextInt();\par
+    System.out.print("Digite o segundo n\'famero: ");\par
+    int num2 = scanner.nextInt();\par
+\par
+    if (num2 == 0) \{\par
+      System.out.println("o resultado da pot\'eancia = 1");\par
+    \} if (num2 == 1) \{\par
+      System.out.println("O resultado da pot\'eancia = " + num1);\par
+    \} else \{\par
+      int resultado = 1;\par
+      for (int i = 0; i < num2; i++) \{\par
+        resultado *= num1;\par
+      \}\par
+      System.out.println("O resultado da pot\'eancia = " + resultado);\par
+      \}\par
+    \} \par
+  \}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 14\par
+Fa\'e7a um programa que pe\'e7a 10 n\'fameros inteiros, calcule e mostre a quantidade de n\'fameros pares e a quantidade de n\'fameros impares.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+    \par
+    int pares = 0;\par
+    int impares = 0;\par
+    \par
+   for ( int i = 0; i < 10; i++) \{\par
+      System.out.println("Digite o " + (i+1) + "\'ba n\'famero:");\par
+      int numero = scanner.nextInt();\par
+\par
+     if ( numero % 2 == 0) \{\par
+       pares++;\par
+     \} else \{\par
+       impares++;\par
+     \}\par
+   \}\par
+    System.out.println("Quantidade de n\'fameros pares: " + pares);\par
+    System.out.println("Quantidade de n\'fameros \'edmpares: " + impares);\par
+\par
+    \}\par
+  \}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 15\par
+A s\'e9rie de Fibonacci \'e9 formada pela seq\'fc\'eancia 1,1,2,3,5,8,13,21,34,55,... Fa\'e7a um programa capaz de gerar a s\'e9rie at\'e9 o n\f1\u8722?\f0\'e9simo termo.\par
+\b0\fs22 import\f2  \f0 java\f2 .\f0 util\f2 .\f0 Scanner\f2 ;\f0\par
+\par
+public\f2  \f0 class\f2  \f0 Main\f2  \{\f0\par
+\f2   \f0 public\f2  \f0 static\f2  \f0 void\f2  \f0 main\f2 (\f0 String\f2 [] \f0 args\f2 ) \{\f0\par
+\f2     \f0 Scanner\f2  \f0 scanner\f2  = \f0 new\f2  \f0 Scanner\f2 (\f0 System\f2 .\f0 in\f2 );\f0\par
+\par
+\f2     \f0 System\f2 .\f0 out\f2 .\f0 println\f2 (\f0 "Digite\f2  \f0 o\f2  \f0 termo\f2  \f0 n\f2 : \f0 "\f2 );\f0\par
+\f2     \f0 int\f2  \f0 n\f2  = \f0 scanner\f2 .\f0 nextInt\f2 ();\f0\par
+\f2     \f0 System\f2 .\f0 out\f2 .\f0 println\f2 (\f0 "A\f2  \f0 sequencia\f2  \f0 de\f2  \f0 Fibonacci\f2  \f0 ate\f2  \f0 o\f2  \f0 "\f2  + \f0 n\f2  + \f0 "\'ba\f2  \f0 termo\f2  \f0\'e9\f2 : \f0 "\f2 );\f0\par
+\par
+\f2     //\f0 Sequencia\f2  \f0 de\f2  \f0 fibonacci\f2 : [\f0 1\f2 , \f0 1\f2 , \f0 2\f2 , \f0 3\f2 , \f0 5\f2 , \f0 8\f2 , \f0 13\f2 , \f0 21\f2 , \f0 34\f2 , \f0 55\f2 , \f0 89\f2 , \f0 144\f2 , \f0 233\f2 , ... \f0 n\f2  \f0 vezes\f2 ]\f0\par
+\par
+\f2     \f0 int\f2  \f0 primeiroTermo\f2  = \f0 1\f2 ;\f0\par
+\f2     \f0 int\f2  \f0 segundoTermo\f2  = \f0 1\f2 ;\f0\par
+\f2     \f0\par
+\f2     \f0 System\f2 .\f0 out\f2 .\f0 print\f2 (\f0 primeiroTermo\f2  + \f0 "\f2  \f0 "\f2  + \f0 segundoTermo\f2  + \f0 "\f2  \f0 "\f2 );\f0\par
+\f2     \f0\par
+\par
+\f2     \f0 if\f2  (\f0 n\f2  >= \f0 3\f2 ) \{\f0\par
+\f2       \f0 for\f2  (\f0 int\f2  \f0 i\f2  = \f0 3\f2 ; \f0 i\f2  <= \f0 n\f2 ; \f0 i\f2 ++) \{\f0\par
+\f2         \f0 int\f2  \f0 proximoTermo\f2  = \f0 primeiroTermo\f2  + \f0 segundoTermo\f2 ;\f0\par
+\f2         \f0 System\f2 .\f0 out\f2 .\f0 print\f2 (\f0 proximoTermo\f2  + \f0 "\f2  \f0 "\f2 );\f0\par
+\f2         \f0 primeiroTermo\f2  = \f0 segundoTermo\f2 ;\f0\par
+\f2         \f0 segundoTermo\f2  = \f0 proximoTermo\f2 ;\f0\par
+\f2             \}\f0\par
+\f2          \}\f0\par
+\f2     \f0 scanner\f2 .\f0 close\f2 (); \f0\par
+\f2       \}\f0\par
+\f2     \}\b\f0\lang22\par
+\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 16\par
+A s\'e9rie de Fibonacci \'e9 formada pela sequ\'eancia 0,1,1,2,3,5,8,13,21,34,55,... Fa\'e7a um programa que gere a s\'e9rie at\'e9 que o valor seja maior que 500.\par
+\b0\fs22 public class Main \{\par
+  public static void main(String[] args) \{\par
+\par
+    int primeiroTermo = 0;\par
+    int segundoTermo = 1;\par
+\par
+    \par
+    System.out.println("Sequ\'eancia de Fibonacci at\'e9 que o valor ultrapasse 500: ");\par
+\par
+    System.out.print(primeiroTermo + " " + segundoTermo + " ");\par
+    int proximoTermo = primeiroTermo + segundoTermo;\par
+\par
+    \par
+\par
+    while (proximoTermo <= 500) \{\par
+      System.out.print(proximoTermo + " ");\par
+      \par
+      primeiroTermo = segundoTermo;\par
+      segundoTermo = proximoTermo;\par
+      proximoTermo = primeiroTermo + segundoTermo;\par
+    \}\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 17\par
+Fa\'e7a um programa que calcule o fatorial de um n\'famero inteiro fornecido pelo usu\'e1rio. Ex.: 5!=5.4.3.2.1=120\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+\par
+    //Processamento pra calcular fatorial\par
+    System.out.print("Digite um n\'famero: ");\par
+    int numero = scanner.nextInt();\par
+\par
+    int fatorial = 1;\par
+\par
+    for (int i = numero; i > 0; i--) \{\par
+      fatorial *= i;\par
+    \}\par
+      System.out.println("O fatorial do n\'famero " + numero + " \'e9: " + fatorial);\par
+      scanner.close();\par
+  \}\par
+\}\b\par
+\fs24 Estrutura de Repeti\'e7\'e3o - 18\par
+Fa\'e7a um programa que, dado um conjunto de N n\'fameros, determine o menor valor, o maior valor e a soma dos valores.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    System.out.print("Digite a quantidade de n\'fameros a serem lidos: ");\par
+    int quantidadeNumeros = scanner.nextInt();\par
+    \par
+    //VARIAVEIS\par
+\par
+    int maiorNumero = Integer.MIN_VALUE; \par
+    int menorNumero = Integer.MAX_VALUE;\par
+    int soma = 0;\par
+\par
+\par
+    for (int i = 0; i < quantidadeNumeros; i++) \{\par
+      System.out.print("Digite o " + (i + 1) + "\'ba n\'famero: ");\par
+      int numero = scanner.nextInt();\par
+\par
+      if (numero > maiorNumero) \{\par
+        maiorNumero = numero;\par
+      \}\par
+\par
+      if (numero < menorNumero) \{\par
+        menorNumero = numero;\par
+      \}\par
+       soma += numero;\par
+    \}\par
+\par
+      System.out.println("O menor n\'famero \'e9: " + menorNumero);\par
+      System.out.println("O maior n\'famero \'e9: " + maiorNumero);\par
+      System.out.println("A soma dos n\'fameros \'e9: " + soma);\par
+\par
+      scanner.close();\par
+    \}\par
+  \}\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 19\par
+Altere o programa anterior para que ele aceite apenas n\'fameros entre 0 e 1000.\par
+\b0\fs22 import java.util.Scanner;\par
+public class Main \{\par
+  public static void main(String[] args) \{\par
+    Scanner scanner = new Scanner(System.in);\par
+\par
+    System.out.print("Digite a quantidade de n\'fameros: ");\par
+    int quantidade = scanner.nextInt();\par
+    \par
+    while (quantidade < 0 || quantidade > 1000) \{\par
+      System.out.println(" N\'famero invalido. Digite um n\'famero entre 1 e 1000: ");\par
+      quantidade = scanner.nextInt();\par
+    \}\par
+\par
+     int menor = Integer.MAX_VALUE;\par
+     int maior = Integer.MIN_VALUE;\par
+     int soma = 0;\par
+      \par
+       \par
+    for (int i = 0; i < quantidade; i++) \{\par
+      System.out.print("Digite o " + (i + 1) + "\'ba n\'famero: ");\par
+      int numero = scanner.nextInt();\par
+\par
+      if (numero < menor) \{\par
+        menor = numero;\par
+      \}\par
+        \par
+      if (numero > maior) \{\par
+        maior = numero;\par
+      \}\par
+        soma += numero;\par
+      \}\par
+        System.out.println("Menor n\'famero: " + menor);\par
+        System.out.println("Maior n\'famero: " + maior);\par
+        System.out.println("Soma dos n\'fameros: " + soma);\par
+        \par
+    \par
+        scanner.close();\par
+  \}\par
+\}\b\par
+\b0\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 20\par
+Altere o programa de c\'e1lculo do fatorial, permitindo ao usu\'e1rio calcular o fatorial v\'e1rias vezes e limitando o fatorial a n\'fameros inteiros positivos e menores que 16.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+    public static void main(String[] args) \{\par
+        Scanner scanner = new Scanner(System.in);\par
+        int num;\par
+\par
+        while (true) \{\par
+            System.out.println("Digite um n\'famero inteiro positivo menor que 16 (-1 para sair): ");\par
+            num = scanner.nextInt();\par
+\par
+            if (num == -1) \{\par
+                System.out.println("Encerrando o programa...");\par
+                break;\par
+            \}\par
+\par
+            if (num < 0 || num >= 16) \{\par
+                System.out.println("N\'famero inv\'e1lido! Por favor, digite um n\'famero inteiro positivo menor que 16.");\par
+                continue;\par
+            \}\par
+\par
+            int resultado = calcularFatorial(num);\par
+            System.out.println("O fatorial de " + num + " \'e9: " + resultado);\par
+        \}\par
+\par
+        scanner.close();\par
+    \}\par
+\par
+    public static int calcularFatorial(int num) \{\par
+        int fatorial = 1;\par
+\par
+        for (int i = 1; i <= num; i++) \{\par
+            fatorial *= i;\par
+        \}\par
+\par
+        System.out.println("O fatorial de " + num + " \'e9: " + fatorial);\par
+        return fatorial;     \}\par
+\}\par
+\b\fs24 Estrutura de Repeti\'e7\'e3o - 21\par
+Fa\'e7a um programa que pe\'e7a um n\'famero inteiro e determine se ele \'e9 ou n\'e3o um n\'famero primo. Um n\'famero primo \'e9 aquele que \'e9 divis\'edvel somente por ele mesmo e por 1.\par
+\b0\fs22 import java.util.Scanner;\par
+\par
+public class Main \{\par
+    public static void main(String[] args) \{\par
+        Scanner scanner = new Scanner(System.in);\par
+\par
+        System.out.println("Digite um n\'famero inteiro positivo:");\par
+        int num = scanner.nextInt();\par
+\par
+        if (primo(num)) \{\par
+            System.out.println(num + " \'e9 um n\'famero primo.");\par
+        \} else \{\par
+            System.out.println(num + " n\'e3o \'e9 um n\'famero primo.");\par
+        \}\par
+\par
+        scanner.close();\par
+    \}\par
+\par
+    public static boolean primo(int num) \{\par
+        if (num <= 1) \{\par
+            return false;\par
+        \}\par
+\par
+        for (int i = 2; i < num; i++) \{\par
+            if (num % i == 0) \{\par
+                return false;\par
+            \}\par
+        \}\par
+\par
+        return true;\par
+    \}\par
+\}\par
+\par
+\par
+}
+ 
