@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Digite o termo n: ");
+    int n = scanner.nextInt();
+    System.out.println("A sequencia de Fibonacci ate o " + n + "º termo é: ");
+
+    //Sequencia de fibonacci: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, ... n vezes]
+
+    int primeiroTermo = 1;
+    int segundoTermo = 1;
+
+    System.out.print(primeiroTermo + " " + segundoTermo + " ");
+
+
+    if (n >= 3) {
+      for (int i = 3; i <= n; i++) {
+        int proximoTermo = primeiroTermo + segundoTermo;
+        System.out.print(proximoTermo + " ");
+        primeiroTermo = segundoTermo;
+        segundoTermo = proximoTermo;
+            }
+         }
+    scanner.close(); 
+      }
+    }

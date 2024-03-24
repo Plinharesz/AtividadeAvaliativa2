@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    
+    
+    
+    System.out.println("População do país A: ");
+    int populacaoA = scanner.nextInt();
+    
+    System.out.println("Taxa de crescimento do país A em (%): ");
+    double taxaCrescimentoA = scanner.nextDouble() / 100;
+    
+    System.out.println("População do país B: ");
+    int populacaoB = scanner.nextInt();
+    
+    System.out.println("Taxa de crescimento do país B em (%): ");
+    double taxaCrescimentoB = scanner.nextDouble() / 100;
+    
+    int anos = 0;
+
+
+      while (populacaoA < populacaoB) {
+        populacaoA += (int) (populacaoA * taxaCrescimentoA);
+        populacaoB += (int) (populacaoB * taxaCrescimentoB);
+        anos++;
+      }
+
+     System.out.println("Serão necessários " + anos + " anos");
+     scanner.close();
+  }
+}

@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    // Variáveis
+    String nome;
+    int idade;
+    double salario;
+    String sexo;
+    String estadoCivil;
+
+    // Entrada de dados e processamento
+
+    do {
+      System.out.println("Digite o nome (mais de 3 caracteres): ");
+      nome = scanner.nextLine();
+    } while (nome.length() <= 3);
+
+    do {
+      System.out.println("Digite a idade (0 a 150): ");
+      idade = scanner.nextInt();
+      scanner.nextLine(); 
+    } while (idade < 0 || idade > 150);
+
+    do {
+      System.out.println("Digite o salário: (maior que 0): ");
+      salario = scanner.nextDouble();
+      scanner.nextLine();
+    } while (salario < 0);
+
+    do {
+      System.out.println("Digite o sexo (F ou M): ");
+      sexo = scanner.nextLine();
+    } while (!sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("M"));
+
+    do {
+      System.out.println("Digite o estado civil (S, C, V ou D): ");
+      estadoCivil = scanner.nextLine();
+    } while (!estadoCivil.equalsIgnoreCase("S") && !estadoCivil.equalsIgnoreCase("C") && 
+      !estadoCivil.equalsIgnoreCase("V") && !estadoCivil.equalsIgnoreCase("D"));
+
+    System.out.println("Nome: " + nome);
+    System.out.println("Idade: " + idade);
+    System.out.println("Salário: " + salario);
+    System.out.println("Sexo: " + sexo);
+    System.out.println("Estado Civil: " + estadoCivil);
+
+    scanner.close();
+  }
+}

@@ -1,0 +1,21 @@
+/* Números de 1 ao 20, um abaixo do outro. Tirar o /* e * / para rodar o código.
+
+public class Main {
+    public static void main(String[] args) {
+      
+      for ( int i = 1; i <= 20; i++) {
+        System.out.println(i);
+      }
+    }
+}
+*/  
+
+
+public class Main {
+  public static void main(String[] args) {
+
+    for (int i = 1; i <= 20; i++) {
+      System.out.print(i + " ");
+    }
+  }
+}

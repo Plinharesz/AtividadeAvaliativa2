@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+  Scanner scanner = new Scanner(System.in);
+
+    double nota;
+    System.out.println("Insira a nota entre 0 e 10: ");
+    nota = scanner.nextDouble();
+
+    while (nota < 0 || nota > 10) {
+      System.out.println("Valor inválido. Digite outra nota: ");
+      nota = scanner.nextDouble();
+    }
+
+    System.out.println("Nota válida: " + nota);
+      scanner.close();
+
+  }
+}
